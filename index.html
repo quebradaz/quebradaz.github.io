@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quebrada Z · sobrevivência zumbi na favela</title>
+<meta name="description" content="Quebrada Z: jogo de sobrevivência por ondas contra zumbis nas quebradas do Rio. Grátis no navegador do PC, iPhone e Android.">
+<meta property="og:title" content="Quebrada Z">
+<meta property="og:description" content="Segura a quebrada. Jogo de zumbi grátis no navegador, no PC, iPhone e Android.">
+<meta property="og:image" content="https://quebradaz.github.io/img/favela-noite.webp">
+<meta name="theme-color" content="#0d0a14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0a14;--bg2:#161120;--card:#1c1628;--line:#2e2640;--ink:#ece8f4;--mute:#a39cb4;--red:#e0322b;--gold:#ffd84a;--green:#7dff6a;--purple:#b06aff;--cyan:#3ee6c8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--gold)}
+img,video{max-width:100%;display:block}
+.px{font-family:"Pixelify Sans",Inter,sans-serif;letter-spacing:.5px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(13,10,20,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:16px;height:58px}
+.brand{font-family:"Pixelify Sans";font-weight:700;font-size:22px;color:#fff;text-decoration:none}
+.brand b{color:var(--red)}
+nav.links{display:flex;gap:14px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav.links a{color:var(--mute);text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap}
+nav.links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:"Pixelify Sans";font-weight:700;font-size:18px;padding:12px 22px;border:2px solid #000;border-radius:10px;background:var(--red);color:#fff;text-decoration:none;box-shadow:0 4px 0 #6a0a0a;cursor:pointer}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #6a0a0a}
+.btn.alt{background:#2a2238;box-shadow:0 4px 0 #120e1a}
+.btn.sm{font-size:15px;padding:8px 14px}
+.hero{position:relative;min-height:min(78vh,640px);display:flex;align-items:flex-end;background:#000}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;opacity:.75}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,10,20,.1),rgba(13,10,20,.5) 55%,var(--bg))}
+.hero .wrap{position:relative;z-index:1;padding-bottom:48px;width:100%}
+.hero h1{font-family:"Pixelify Sans";font-size:clamp(44px,9vw,92px);line-height:.95;margin:0 0 10px;text-shadow:4px 4px 0 #000}
+.hero h1 b{color:var(--red)}
+.hero p.lead{font-size:clamp(16px,2.2vw,20px);max-width:620px;color:#ddd6ea;margin:0 0 22px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.nums{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px}
+.nums div{font-family:"Pixelify Sans"}
+.nums b{display:block;font-size:28px;color:var(--gold)}
+.nums span{color:var(--mute);font-size:13px;font-family:Inter}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section h2{font-family:"Pixelify Sans";font-size:clamp(28px,4vw,40px);margin:0 0 8px}
+section .sub{color:var(--mute);margin:0 0 28px;max-width:680px}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{font-family:"Pixelify Sans";margin:0 0 6px;font-size:22px}
+.card p{margin:0;color:#cfc8dd}
+.plat .ic{font-size:30px;line-height:1;margin-bottom:8px}
+.plat ol{margin:8px 0 0;padding-left:20px;color:#cfc8dd}
+.plat .tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:99px;background:#1f4a1a;color:#c8ffb8;margin-bottom:8px}
+.plat .tag.soon{background:#3a2a10;color:#ffd84a}
+.maps .card{padding:0;overflow:hidden}
+.maps .card img{aspect-ratio:16/9;object-fit:cover;width:100%;image-rendering:pixelated}
+.maps .card div{padding:12px 14px}
+.notes .ver{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.notes .ver b{font-family:"Pixelify Sans";color:var(--gold);font-size:20px}
+.notes .ver h4{margin:0 0 4px}
+.notes .ver ul{margin:4px 0 0;padding-left:18px;color:#cfc8dd}
+.notes .more{margin-top:14px}
+.feat li{margin:4px 0}
+.coin{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.coin i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.video{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
+.video video{width:100%;aspect-ratio:16/9;image-rendering:pixelated}
+.rank select,.acc input{font:inherit;background:#120e1a;color:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:600;font-size:13px}
+td.n{font-variant-numeric:tabular-nums}
+tr.me td{background:rgba(125,255,106,.1)}
+.acc .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:14px 0}
+.acc .stats div{background:#120e1a;border:1px solid var(--line);border-radius:10px;padding:10px}
+.acc .stats b{display:block;font-family:"Pixelify Sans";font-size:22px;color:var(--gold)}
+.acc .stats span{color:var(--mute);font-size:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--mute)}
+.danger{background:#3a0e12;box-shadow:0 4px 0 #1a0406}
+footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+footer a{color:var(--mute)}
+@media (max-width:640px){nav.links{display:none}.notes .ver{grid-template-columns:1fr;gap:2px}section{padding:44px 0}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#">QUEBRADA <b>Z</b></a>
+  <nav class="links"><a href="#jogar">Onde jogar</a><a href="#novidades">Novidades</a><a href="#jogo">O jogo</a><a href="#videos">Vídeos</a><a href="#ranking">Ranking</a><a href="#conta">Minha conta</a></nav>
+  <a class="btn sm" href="/game/">JOGAR</a>
+</div></header>
+
+<div class="hero">
+  <img src="img/favela-noite.webp" alt="Cena do jogo: favela à noite com chuva e zumbis">
+  <div class="wrap">
+    <h1>QUEBRADA <b>Z</b></h1>
+    <p class="lead">Sobrevivência por ondas contra zumbis nas quebradas do Rio de Janeiro. Segura a adega, abre caminho até a praia, encara o Capitão Caveira. Grátis, direto no navegador.</p>
+    <div class="ctas"><a class="btn" href="/game/">▶ JOGAR AGORA</a><a class="btn alt" href="#jogar">Como jogar no celular</a></div>
+    <div class="nums" id="nums"></div>
+  </div>
+</div>
+
+<section id="jogar"><div class="wrap">
+  <h2>Onde jogar</h2>
+  <p class="sub">Uma conta Google guarda seu personagem, seu progresso e seu lugar no ranking em qualquer aparelho.</p>
+  <div class="grid g3">
+    <div class="card plat"><div class="ic">🖥️</div><span class="tag">ONLINE</span><h3>PC</h3><p>Chrome, Edge ou Firefox. Mira com o mouse, anda com WASD.</p><ol><li>Abra <a href="/game/">quebradaz.github.io/game</a></li><li>Entre com o Google</li><li>Bora</li></ol></div>
+    <div class="card plat"><div class="ic">📱</div><span class="tag">ONLINE</span><h3>iPhone</h3><p>No Safari, com o celular deitado.</p><ol><li>Abra <a href="/game/">o jogo</a> no Safari</li><li>Toque em Compartilhar › <b>Adicionar à Tela de Início</b></li><li>Abra pelo ícone e jogue em tela cheia</li></ol></div>
+    <div class="card plat"><div class="ic">🤖</div><span class="tag">ONLINE</span> <span class="tag soon">PLAY STORE EM BREVE</span><h3>Android</h3><p>No Chrome, com o celular deitado.</p><ol><li>Abra <a href="/game/">o jogo</a> no Chrome</li><li>Menu ⋮ › <b>Adicionar à tela inicial</b></li><li>Abra pelo ícone</li></ol></div>
+  </div>
+</div></section>
+
+<section id="novidades"><div class="wrap notes">
+  <h2>Novidades</h2>
+  <p class="sub">Notas de cada atualização. O jogo avisa quando sai versão nova.</p>
+  <div id="notes"></div>
+  <button class="btn alt sm more" id="moreNotes">Ver versões antigas</button>
+</div></section>
+
+<section id="jogo"><div class="wrap">
+  <h2>O jogo</h2>
+  <p class="sub">Campanha <b>HELL DE JANEIRO</b>: sete quebradas, cada uma com 20 ondas. Chegar na onda 14 libera a próxima.</p>
+  <div class="grid g3 maps" id="maps"></div>
+  <div class="grid g2" style="margin-top:24px">
+    <div class="card feat"><h3>Chefes</h3><ul><li><b>Capitão Caveira</b> na onda 7: blindado, sem colete, em fúria.</li><li><b>O Observador</b> na onda 14.</li><li>O Capitão volta em fúria na onda 20, a última.</li><li>Cada chefe entra com cena própria e solta uma arma dourada.</li></ul></div>
+    <div class="card feat"><h3>Moedas e progresso</h3><ul><li><span class="coin"><i style="background:#f2c230"></i>Moeda comum</span>: ganha jogando, compra visual e melhorias.</li><li><span class="coin"><i style="background:#3ee6c8"></i>Chip de tecnologia</span>: chefes têm 50% de chance de soltar; compra habilidades.</li><li><span class="coin"><i style="background:#b06aff"></i>Z-Coin</span>: passe premium e roupas raras e lendárias.</li><li>Passe da temporada com 40 níveis, 5 missões por semana e caixa grátis ao completar um mapa.</li></ul></div>
+    <div class="card feat"><h3>Zumbis</h3><ul><li>Zé, corredor, rastejante, selvagem, cão, segurança, bombeiro, hazmat, Choque, Mutante e mais.</li><li>Cada tipo anda, ataca e morre do seu jeito.</li></ul></div>
+    <div class="card feat"><h3>Clima e horário</h3><ul><li>Dia, tarde ou noite sorteados a cada partida.</li><li>Chuva, tempestade com raio e tempestade de areia na praia.</li><li>À noite: zumbis mais rápidos, pontos ×1,5 e velas nas casas.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="videos"><div class="wrap">
+  <h2>Vídeos</h2>
+  <p class="sub">Gravado direto do jogo. Trailer e cortes para as redes chegam em breve.</p>
+  <div class="grid g2">
+    <div class="video"><video src="video/gameplay.webm" controls muted loop playsinline preload="metadata" poster="img/favela-noite.webp"></video></div>
+    <div class="card"><h3>Galeria</h3><div class="grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px" id="gal"></div></div>
+  </div>
+</div></section>
+
+<section id="ranking"><div class="wrap rank">
+  <h2>Ranking</h2>
+  <p class="sub">Melhor onda por quebrada. Desempate por abates e depois por menos tempo. Só contam partidas conferidas pelo servidor.</p>
+  <div class="row" style="margin-bottom:12px"><label for="rkMap" class="muted">Quebrada</label><select id="rkMap"></select></div>
+  <div class="card"><table><thead><tr><th>#</th><th>Nome</th><th>Onda</th><th>Abates</th><th>Tempo</th></tr></thead><tbody id="rkBody"><tr><td colspan="5" class="muted">Carregando...</td></tr></tbody></table></div>
+</div></section>
+
+<section id="conta"><div class="wrap acc">
+  <h2>Minha conta</h2>
+  <div class="card" id="acc"><p class="muted">Carregando...</p></div>
+</div></section>
+
+<footer><div class="wrap row" style="justify-content:space-between">
+  <span>Quebrada Z · feito na quebrada</span>
+  <span class="row"><a href="/game/privacidade.html">Privacidade</a><a href="/game/termos.html">Termos</a><a href="mailto:amplitudelabb@gmail.com">Contato</a></span>
+</div></footer>
+
+<script>
+(function () {
+  "use strict";
+  var URL = "https://wjjuuqvdttjuzsgqueuj.supabase.co", KEY = "sb_publishable_4qQQ9BLb8BsTwPv9kHa1RQ_diKNRwvY", LS = "qz_auth";
+  var MAPS = [
+    ["adega", "Adega do Marcão", "A pracinha caiu. Segura a adega.", "favela-noite"],
+    ["lava", "Lava-rápido do Juninho", "Ducha, cera e chumbo.", "favela-noite"],
+    ["quadra", "Quadra da Comunidade", "Final de campeonato, só que de zumbi.", "quadra-tarde"],
+    ["laje", "Baile da Laje", "O paredão não para. A horda também não.", "baile-noite"],
+    ["cristo", "Cristo Redentor", "A neblina desceu no Corcovado.", "cristo-tarde"],
+    ["copa", "Copacabana", "O sol caiu na orla. A horda veio com a maré.", "praia-dia"],
+    ["lapa", "Arcos da Lapa", "Samba, bondinho e muito zumbi.", "lapa-noite"]
+  ];
+  // notas de versão (sem nada interno do jogo)
+  var NOTES = [
+    ["28.4", "Interface no celular", ["Tela inicial cabe no celular deitado", "Textos dos menus maiores", "Ajustes › Tamanho da interface: pequeno, médio ou grande"]],
+    ["28.3", "Chip, Z-Coin e passe", ["Chip de tecnologia: chefes têm 50% de chance de soltar; compra habilidades", "Z-Coin e loja de roupas raras e lendárias", "Passe da Temporada 1 com 40 níveis e trilha premium", "5 missões por semana", "Caixa grátis ao completar um mapa, com as chances na tela"]],
+    ["28.2", "Conta Google e ranking", ["Entre com o Google e jogue com o mesmo progresso no PC e no celular", "Escolha o nome do seu personagem", "Ranking por quebrada", "Perfil com estatísticas, trocar nome e excluir conta"]],
+    ["28.0", "Correções", ["Laboratório do sangue não trava mais as partidas", "Praia com mar de verdade", "Móveis e garrafas na escala certa", "Sem chuva e sem vela dentro de casa", "Rolagem melhor na escolha de mapa"]],
+    ["27.4", "Desempenho", ["Chuva e reflexo não somem mais no meio da partida", "Jogo mais leve, sem travadinhas de troca de qualidade"]],
+    ["27.3", "Cenário novo", ["Fundo da quebrada em camadas em todos os mapas", "Grafites espalhados pelos muros", "Musgo e mato: tudo meio abandonado"]],
+    ["27.2", "Chefes com cena", ["Cada chefe entra com uma apresentação de 4 segundos"]],
+    ["27.1", "Zumbis novos", ["Todos os zumbis redesenhados no mesmo traço", "Animações mais fluidas", "Chegar na onda 14 libera a próxima quebrada"]],
+    ["27.0", "Luz e clima", ["Sol, lua de sangue, nuvens, raios de luz", "Chuva, tempestade com raio e tempestade de areia na praia"]],
+    ["26.x", "Hell de Janeiro", ["Campanha com Cristo, Copacabana e Lapa", "Capitão Caveira e Observador", "Mesa de upgrade diamante, perk Dupla Rodada, ondas até a 20", "Vozes dos zumbis, trilha sonora e seringa"]]
+  ];
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var fmt = function (n) { return Number(n || 0).toLocaleString("pt-BR"); };
+  var mmss = function (s) { s = s | 0; return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); };
+
+  // ---------- sessão (a mesma do jogo: o site e o jogo ficam no mesmo endereço)
+  var ses = null;
+  try { ses = JSON.parse(localStorage.getItem(LS) || "null"); } catch (e) {}
+  function store(v) { ses = v; try { v ? localStorage.setItem(LS, JSON.stringify(v)) : localStorage.removeItem(LS); } catch (e) {} }
+  (function fromHash() {
+    var h = location.hash || "";
+    if (h.indexOf("access_token=") < 0) return;
+    var q = {};
+    h.slice(1).split("&").forEach(function (p) { var i = p.indexOf("="); if (i > 0) q[p.slice(0, i)] = decodeURIComponent(p.slice(i + 1).replace(/\+/g, " ")); });
+    store({ at: q.access_token, rt: q.refresh_token, exp: Date.now() + (+q.expires_in || 3600) * 1000 });
+    history.replaceState(null, "", location.pathname + "#conta");
+  })();
+  function hdr(auth) { var h = { apikey: KEY, "Content-Type": "application/json" }; if (auth && ses) h.Authorization = "Bearer " + ses.at; return h; }
+  function fresh() {
+    if (!ses) return Promise.reject(new Error("SEM_LOGIN"));
+    if (ses.exp - Date.now() > 60000) return Promise.resolve();
+    return fetch(URL + "/auth/v1/token?grant_type=refresh_token", { method: "POST", headers: hdr(false), body: JSON.stringify({ refresh_token: ses.rt }) })
+      .then(function (r) { if (!r.ok) { store(null); throw new Error("SEM_LOGIN"); } return r.json(); })
+      .then(function (j) { store({ at: j.access_token, rt: j.refresh_token, exp: Date.now() + (j.expires_in || 3600) * 1000 }); });
+  }
+  function call(path, opt, auth) {
+    opt = opt || {};
+    var go = function () { return fetch(URL + path, { method: opt.method || "GET", headers: hdr(auth), body: opt.body ? JSON.stringify(opt.body) : undefined }).then(function (r) { return r.text().then(function (t) { var j = t ? JSON.parse(t) : null; if (!r.ok) throw new Error((j && j.message) || ("HTTP " + r.status)); return j; }); }); };
+    return auth ? fresh().then(go) : go();
+  }
+  var rpc = function (fn, args, auth) { return call("/rest/v1/rpc/" + fn, { method: "POST", body: args || {} }, auth); };
+
+  // ---------- números do jogo
+  rpc("game_public_stats", {}, false).then(function (s) {
+    $("nums").innerHTML = [["players", "sobreviventes"], ["matches", "partidas"], ["kills", "zumbis abatidos"], ["online_24h", "jogaram nas últimas 24 h"]]
+      .map(function (k) { return "<div><b>" + fmt(s[k[0]]) + "</b><span>" + k[1] + "</span></div>"; }).join("");
+  }).catch(function () {});
+
+  // ---------- novidades
+  var showAll = false;
+  function paintNotes() {
+    $("notes").innerHTML = NOTES.slice(0, showAll ? NOTES.length : 4).map(function (n) {
+      return '<div class="ver"><b>v' + n[0] + "</b><div><h4>" + esc(n[1]) + "</h4><ul>" + n[2].map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div></div>";
+    }).join("");
+    $("moreNotes").style.display = showAll ? "none" : "";
+  }
+  $("moreNotes").onclick = function () { showAll = true; paintNotes(); };
+  paintNotes();
+
+  // ---------- mapas e galeria
+  $("maps").innerHTML = MAPS.map(function (m) { return '<div class="card"><img loading="lazy" src="img/' + m[3] + '.webp" alt="' + esc(m[1]) + '"><div><h3>' + esc(m[1]) + "</h3><p>" + esc(m[2]) + "</p></div></div>"; }).join("");
+  $("gal").innerHTML = ["favela-noite", "praia-dia", "cristo-tarde", "lapa-noite", "baile-noite", "quadra-tarde"].map(function (k) { return '<a href="img/' + k + '.webp" target="_blank" rel="noopener"><img loading="lazy" src="img/' + k + '.webp" alt="Captura do jogo" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover;image-rendering:pixelated"></a>'; }).join("");
+
+  // ---------- ranking (aberto: só nome e números)
+  $("rkMap").innerHTML = MAPS.map(function (m) { return '<option value="' + m[0] + '">' + esc(m[1]) + "</option>"; }).join("");
+  function rank() {
+    var b = $("rkBody");
+    b.innerHTML = '<tr><td colspan="5" class="muted">Carregando...</td></tr>';
+    rpc("get_leaderboard", { p_map: $("rkMap").value, p_limit: 20 }, !!ses).catch(function () { return rpc("get_leaderboard", { p_map: $("rkMap").value, p_limit: 20 }, false); }).then(function (a) {
+      b.innerHTML = !a || !a.length ? '<tr><td colspan="5" class="muted">Ninguém no ranking desta quebrada ainda. Seja o primeiro.</td></tr>' :
+        a.map(function (r) { return "<tr" + (r.me ? ' class="me"' : "") + "><td class=n>" + r.pos + "º</td><td>" + esc(r.name) + "</td><td class=n>" + r.best_wave + "</td><td class=n>" + fmt(r.best_kills) + "</td><td class=n>" + mmss(r.best_seconds) + "</td></tr>"; }).join("");
+    }).catch(function () { b.innerHTML = '<tr><td colspan="5" class="muted">Não deu para carregar o ranking agora.</td></tr>'; });
+  }
+  $("rkMap").onchange = rank;
+  rank();
+
+  // ---------- minha conta
+  function login() { location.href = URL + "/auth/v1/authorize?provider=google&redirect_to=" + encodeURIComponent(location.origin + "/"); }
+  function logout() {
+    var at = ses && ses.at;
+    store(null);
+    if (at) fetch(URL + "/auth/v1/logout", { method: "POST", headers: { apikey: KEY, Authorization: "Bearer " + at } }).catch(function () {});
+    acc();
+  }
+  function del() {
+    if (!confirm("Excluir a conta apaga o personagem, o progresso, as estatísticas, os itens, as moedas e o seu lugar no ranking. Não dá para desfazer. Continuar?")) return;
+    if (!confirm("Tem certeza? Essa é a última confirmação.")) return;
+    fresh().then(function () { return fetch(URL + "/functions/v1/delete-account", { method: "POST", headers: hdr(true) }); })
+      .then(function (r) { if (!r.ok) throw new Error(); store(null); $("acc").innerHTML = "<p>Conta excluída.</p>"; })
+      .catch(function () { alert("Não deu para excluir agora. Tente de novo ou fale com a gente pelo e-mail no rodapé."); });
+  }
+  function acc() {
+    var box = $("acc");
+    if (!ses) {
+      box.innerHTML = '<h3>Entre com o Google</h3><p class="muted">Veja seu personagem, estatísticas, saldos e posição no ranking. É a mesma conta do jogo.</p><div class="row" style="margin-top:12px"><button class="btn" id="bIn">ENTRAR COM GOOGLE</button><a class="btn alt" href="/game/">Jogar sem entrar</a></div>';
+      $("bIn").onclick = login;
+      return;
+    }
+    box.innerHTML = '<p class="muted">Carregando sua conta...</p>';
+    Promise.all([
+      call("/rest/v1/profiles?select=name,created_at&limit=1", null, true),
+      call("/rest/v1/player_stats?select=*&limit=1", null, true),
+      call("/rest/v1/map_stats?select=map_id,best_wave,best_kills,matches,wins", null, true),
+      rpc("get_economy", {}, true).catch(function () { return null; })
+    ]).then(function (r) {
+      var p = r[0] && r[0][0] || {}, s = r[1] && r[1][0] || {}, ms = r[2] || [], e = r[3];
+      var acc2 = s.shots > 0 ? Math.round(s.hits / s.shots * 100) + "%" : "—";
+      var stat = function (v, l) { return "<div><b>" + v + "</b><span>" + l + "</span></div>"; };
+      var lv = e && e.pass ? Math.min(e.pass.levels, Math.floor(e.pass.xp / e.pass.xp_per)) : 0;
+      box.innerHTML = "<h3>" + esc(p.name || "Personagem sem nome") + '</h3><p class="muted">Conta desde ' + (p.created_at ? new Date(p.created_at).toLocaleDateString("pt-BR") : "—") + "</p>" +
+        '<div class="stats">' + stat(fmt(s.matches), "partidas") + stat(fmt(s.wins), "vitórias") + stat(fmt(s.kills), "abates") + stat(fmt(s.deaths), "mortes") + stat(fmt(s.bosses), "chefes") + stat(s.best_wave || 0, "melhor onda") + stat(acc2, "precisão") + stat(Math.round((s.play_seconds || 0) / 60) + " min", "jogado") +
+        (e ? stat(fmt(e.wallet.chips), "chips") + stat(fmt(e.wallet.zcoin), "Z-Coin") + stat(lv + (e.pass && e.pass.premium ? " ★" : ""), "nível do passe") : "") + "</div>" +
+        (ms.length ? "<table><thead><tr><th>Quebrada</th><th>Melhor onda</th><th>Melhor abates</th><th>Partidas</th><th>Vitórias</th></tr></thead><tbody>" + ms.map(function (m) { var n = MAPS.filter(function (x) { return x[0] === m.map_id; })[0]; return "<tr><td>" + esc(n ? n[1] : m.map_id) + "</td><td class=n>" + m.best_wave + "</td><td class=n>" + fmt(m.best_kills) + "</td><td class=n>" + m.matches + "</td><td class=n>" + m.wins + "</td></tr>"; }).join("") + "</tbody></table>" : '<p class="muted">Nenhuma partida registrada ainda.</p>') +
+        '<div class="row" style="margin-top:16px"><a class="btn" href="/game/">▶ JOGAR</a><button class="btn alt" id="bOut">Sair</button><button class="btn danger" id="bDel">Excluir minha conta</button></div>';
+      $("bOut").onclick = logout;
+      $("bDel").onclick = del;
+    }).catch(function (err) {
+      if (String(err && err.message).indexOf("SEM_LOGIN") >= 0) { store(null); return acc(); }
+      box.innerHTML = '<p class="muted">Não deu para carregar sua conta agora. Tente de novo em instantes.</p><div class="row"><button class="btn alt" id="bOut">Sair</button></div>';
+      $("bOut").onclick = logout;
+    });
+  }
+  acc();
+})();
+</script>
+</body>
+</html>

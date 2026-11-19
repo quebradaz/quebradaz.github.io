@@ -117,12 +117,25 @@ footer a{color:var(--mute)}
 .rkDots{display:flex;justify-content:center;gap:7px;padding:10px}
 .rkDots i{width:8px;height:8px;border-radius:50%;background:var(--line)}.rkDots i.on{background:var(--gold)}
 @media (max-width:560px){.pd .av{width:54px;height:54px}.pd.p1 .av{width:72px;height:72px}.pd .nm{font-size:15px}.rkRest .r{grid-template-columns:34px 30px minmax(0,1fr) 56px 64px;font-size:14px}.rkRest .r span:last-child{display:none}}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.vid{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vid video{width:100%;aspect-ratio:16/9;background:#000;image-rendering:pixelated;display:block}
+.vid div{padding:10px 14px}.vid h3{font-family:"Pixelify Sans";margin:0;font-size:19px}.vid p{margin:2px 0 0;color:var(--mute);font-size:14px}
+.best{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.bz{display:flex;gap:12px;align-items:center;padding:12px}
+.bzSp{flex:0 0 auto;image-rendering:pixelated;background-repeat:no-repeat;animation:bzWalk 1.4s steps(var(--n)) infinite;filter:drop-shadow(0 4px 0 rgba(0,0,0,.4))}
+@keyframes bzWalk{to{background-position-x:calc(var(--w) * -1)}}
+.bz h3{margin:0;font-size:20px}.bz p{font-size:14px;margin:4px 0 0}.bz .tip{color:#cfc8dd}.bz .tip b{color:var(--gold)}
+.thr{display:flex;gap:3px;margin-top:2px}.thr i{width:14px;height:6px;border-radius:2px;background:var(--line)}.thr i.on{background:var(--red)}
+.guide{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.guide ul{margin:6px 0 0;padding-left:18px;color:#cfc8dd}.guide li{margin:4px 0}
+@media (prefers-reduced-motion:reduce){.bzSp{animation:none}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#">QUEBRADA <b>Z</b></a>
-  <nav class="links"><a href="#jogar">Onde jogar</a><a href="#novidades">Novidades</a><a href="#jogo">O jogo</a><a href="#videos">Vídeos</a><a href="#ranking">Ranking</a><a href="#conta">Minha conta</a></nav>
+  <nav class="links"><a href="#jogar">Onde jogar</a><a href="#novidades">Novidades</a><a href="#jogo">O jogo</a><a href="#videos">Vídeos</a><a href="#bestiario">Bestiário</a><a href="#guia">Guia</a><a href="#ranking">Ranking</a><a href="#conta">Minha conta</a></nav>
   <a class="btn sm" href="/game/">JOGAR</a>
 </div></header>
 
@@ -167,10 +180,60 @@ footer a{color:var(--mute)}
 
 <section id="videos"><div class="wrap">
   <h2>Vídeos</h2>
-  <p class="sub">Gravado direto do jogo. Trailer e cortes para as redes chegam em breve.</p>
+  <p class="sub">Tudo gravado direto do jogo, sem edição.</p>
+  <div class="vids" style="margin-bottom:16px">
+    <div class="vid"><video src="video/ondas-17-lapa.webm" controls muted loop playsinline preload="metadata" poster="img/lapa-noite.webp"></video><div><h3>Onda 17 nos Arcos da Lapa</h3><p>A horda inteira em cima, de M60 dourada.</p></div></div>
+    <div class="vid"><video src="video/onda-18-copacabana.webm" controls muted loop playsinline preload="metadata" poster="img/praia-dia.webp"></video><div><h3>Onda 18 em Copacabana</h3><p>Duas ondas do fim, com a M249.</p></div></div>
+    <div class="vid"><video src="video/chefe-capitao.webm" controls muted loop playsinline preload="metadata" poster="img/cristo-tarde.webp"></video><div><h3>Chefe: Capitão Caveira</h3><p>A chegada e a luta no Cristo Redentor.</p></div></div>
+    <div class="vid"><video src="video/guarda-roupa.webm" controls muted loop playsinline preload="metadata"></video><div><h3>Guarda-roupa</h3><p>Roupas comuns, raras e lendárias no seu personagem.</p></div></div>
+    <div class="vid"><video src="video/bau-raridades.webm" controls muted loop playsinline preload="metadata"></video><div><h3>Baú de raridades</h3><p>Branco é comum, roxo é raro, dourado é lendário.</p></div></div>
+    <div class="vid"><video src="video/gameplay.webm" controls muted loop playsinline preload="metadata" poster="img/favela-noite.webp"></video><div><h3>Uma noite na favela</h3><p>O começo de uma partida.</p></div></div>
+  </div>
   <div class="grid g2">
-    <div class="video"><video src="video/gameplay.webm" controls muted loop playsinline preload="metadata" poster="img/favela-noite.webp"></video></div>
     <div class="card"><h3>Galeria</h3><div class="grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px" id="gal"></div></div>
+  </div>
+</div></section>
+
+<section id="bestiario"><div class="wrap">
+  <h2>Bestiário</h2>
+  <p class="sub">Todo zumbi que você vai encontrar na quebrada, do mais fraco aos chefes, e como derrubar cada um.</p>
+  <div class="best"><div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/ze.png);background-size:2560px 160px"></div><div><h3>Zé</h3><div class="thr" title="Ameaça 1 de 5"><i class="on"></i><i></i><i></i><i></i><i></i></div><p>O morador comum que virou zumbi. Lento, mas nunca vem sozinho.</p><p class="tip"><b>Como lidar:</b> Tiro na cabeça economiza bala.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/torcedor.png);background-size:2560px 160px"></div><div><h3>Torcedor</h3><div class="thr" title="Ameaça 1 de 5"><i class="on"></i><i></i><i></i><i></i><i></i></div><p>Não largou a camisa do time nem depois de morto. Anda em bando.</p><p class="tip"><b>Como lidar:</b> Junte vários na mesma linha e varra com a metralhadora.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/civil.png);background-size:2560px 160px"></div><div><h3>Civil</h3><div class="thr" title="Ameaça 1 de 5"><i class="on"></i><i></i><i></i><i></i><i></i></div><p>Um pouco mais rápido que o Zé.</p><p class="tip"><b>Como lidar:</b> Mesma receita: cabeça.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/corredor.png);background-size:2560px 160px"></div><div><h3>Corredor</h3><div class="thr" title="Ameaça 2 de 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p>O mais rápido da quebrada, com pouca vida.</p><p class="tip"><b>Como lidar:</b> Não deixe ele colar: atire assim que aparecer.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/rastejante.png);background-size:2560px 160px"></div><div><h3>Rastejante</h3><div class="thr" title="Ameaça 2 de 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p>Se arrasta pelo chão e passa por baixo da sua mira.</p><p class="tip"><b>Como lidar:</b> Mire baixo ou use faca.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/cao.png);background-size:2560px 160px"></div><div><h3>Cão zumbi</h3><div class="thr" title="Ameaça 3 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Baixo, rápido e dá o bote de longe.</p><p class="tip"><b>Como lidar:</b> Pule por cima do salto e atire na volta.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3200px;--n:20;width:160px;height:160px;background-image:url(bestiario/selvagem.png);background-size:3200px 160px"></div><div><h3>Selvagem</h3><div class="thr" title="Ameaça 3 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Agachado e ligeiro, salta em cima de você.</p><p class="tip"><b>Como lidar:</b> Recue quando ele se preparar e atire no ar.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3200px;--n:20;width:160px;height:160px;background-image:url(bestiario/pixador.png);background-size:3200px 160px"></div><div><h3>Pixador</h3><div class="thr" title="Ameaça 3 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Mesmo bote do Selvagem, de boné e lata na mão.</p><p class="tip"><b>Como lidar:</b> Mesma tática do Selvagem.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2240px;--n:14;width:160px;height:160px;background-image:url(bestiario/vovo.png);background-size:2240px 160px"></div><div><h3>Vovó</h3><div class="thr" title="Ameaça 2 de 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p>Joga o chinelo de longe. Fraquinha, mas não erra.</p><p class="tip"><b>Como lidar:</b> Feche a distância ou derrube antes do arremesso.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/gari.png);background-size:2560px 160px"></div><div><h3>Gari</h3><div class="thr" title="Ameaça 2 de 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p>Arremessa lixo de longe.</p><p class="tip"><b>Como lidar:</b> Atire primeiro; ele para pra arremessar.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/cuspidor.png);background-size:2560px 160px"></div><div><h3>Cuspidor</h3><div class="thr" title="Ameaça 3 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Cospe ácido à distância e chia antes.</p><p class="tip"><b>Como lidar:</b> Ouviu o chiado, saia da frente.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2240px;--n:14;width:160px;height:160px;background-image:url(bestiario/grita.png);background-size:2240px 160px"></div><div><h3>Gritadeira</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>O grito deixa os zumbis por perto mais fortes e rápidos.</p><p class="tip"><b>Como lidar:</b> Prioridade máxima: mate antes de ela gritar.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/pedreiro.png);background-size:2560px 160px"></div><div><h3>Pedreiro</h3><div class="thr" title="Ameaça 3 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p>O capacete de obra segura os primeiros tiros. Tem 35% mais vida.</p><p class="tip"><b>Como lidar:</b> Quebre o capacete e depois mire na cabeça.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/motoboy.png);background-size:2560px 160px"></div><div><h3>Motoboy</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>De capacete, para piscando e arranca em linha reta.</p><p class="tip"><b>Como lidar:</b> Quando ele piscar, pule ou saia da linha.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/choque.png);background-size:2560px 160px"></div><div><h3>Choque</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Capacete, arrancada e quase o dobro de vida.</p><p class="tip"><b>Como lidar:</b> Mesma tática do Motoboy, com mais bala.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2944px;--n:16;width:184px;height:184px;background-image:url(bestiario/mutante.png);background-size:2944px 184px"></div><div><h3>Mutante</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Maior que os outros e recupera a vida se você der tempo.</p><p class="tip"><b>Como lidar:</b> Concentre o fogo até ele cair.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3200px;--n:20;width:160px;height:160px;background-image:url(bestiario/botijao.png);background-size:3200px 160px"></div><div><h3>Botijão</h3><div class="thr" title="Ameaça 5 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Carrega um botijão nas costas e explode quando chega perto.</p><p class="tip"><b>Como lidar:</b> Mate de longe: a explosão leva os zumbis em volta.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/hazmat.png);background-size:2560px 160px"></div><div><h3>Hazmat</h3><div class="thr" title="Ameaça 5 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Traje químico que explode quando encosta.</p><p class="tip"><b>Como lidar:</b> Nunca deixe chegar perto.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3584px;--n:16;width:224px;height:224px;background-image:url(bestiario/bruta.png);background-size:3584px 224px"></div><div><h3>Bruta</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Enorme e lenta, com mais de 3 vezes a vida. Empurra forte.</p><p class="tip"><b>Como lidar:</b> Granada e tiro contínuo. Mantenha distância.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3200px;--n:16;width:200px;height:200px;background-image:url(bestiario/brutao.png);background-size:3200px 200px"></div><div><h3>Segurança</h3><div class="thr" title="Ameaça 5 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>O brutamontes do baile: muita vida e soco que derruba.</p><p class="tip"><b>Como lidar:</b> Molotov no caminho e recue atirando.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:2560px;--n:16;width:160px;height:160px;background-image:url(bestiario/bombeiro.png);background-size:2560px 160px"></div><div><h3>Bombeiro</h3><div class="thr" title="Ameaça 4 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Roupa grossa: mais de 2 vezes a vida e golpe pesado.</p><p class="tip"><b>Como lidar:</b> Arma forte e mira na cabeça.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:1552px;--n:8;width:194px;height:194px;background-image:url(bestiario/cap1.png);background-size:1552px 194px"></div><div><h3>Capitão Caveira</h3><div class="thr" title="Ameaça 5 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Chefe da onda 7, volta em fúria na onda 20. Atira, joga granada e chama reforço. Tem três fases: blindado, rachado e em fúria.</p><p class="tip"><b>Como lidar:</b> Use cobertura, guarde granada para quando ele chamar reforço e não pare de se mexer.</p></div></div>
+<div class="card bz"><div class="bzSp" style="--w:3200px;--n:16;width:200px;height:200px;background-image:url(bestiario/observador.png);background-size:3200px 200px"></div><div><h3>O Observador</h3><div class="thr" title="Ameaça 5 de 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Chefe da onda 14. Gigante, com um olho vermelho que nunca perde você de vista.</p><p class="tip"><b>Como lidar:</b> Mantenha distância e gaste as perks antes de ele chegar.</p></div></div></div>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <h2>Como sobreviver</h2>
+  <p class="sub">O que separa quem cai na onda 5 de quem fecha a 20.</p>
+  <div class="guide">
+    <div class="card"><h3>Primeiras ondas</h3><ul><li>Prenda tábua nas janelas entre uma onda e outra: cada tábua dá R$.</li><li>Use a faca nos zumbis das ondas 1 e 2: vale mais ponto e guarda bala.</li><li>Tiro na cabeça mata mais rápido e paga mais.</li></ul></div>
+    <div class="card"><h3>Dinheiro</h3><ul><li>Compre a primeira arma da parede cedo; a pistola inicial não segura a onda 6.</li><li>Abra portas só quando precisar de espaço ou de uma perk nova.</li><li>Guarde para o Mercador: ele vende colete, seringa e kit de reviver.</li></ul></div>
+    <div class="card"><h3>Posição</h3><ul><li>Lute num corredor com uma janela só, assim os zumbis chegam em fila.</li><li>Nunca fique entre duas janelas abertas.</li><li>Use a escada: quem sobe vem um de cada vez.</li></ul></div>
+    <div class="card"><h3>Prioridades</h3><ul><li>Gritadeira primeiro: o grito deixa a horda mais forte.</li><li>Botijão e Hazmat de longe: a explosão limpa a fila inteira.</li><li>Motoboy piscou: saia da linha da arrancada.</li></ul></div>
+    <div class="card"><h3>Chefes</h3><ul><li>Onda 7: Capitão Caveira. Guarde granada para quando ele chamar reforço.</li><li>Onda 14: o Observador. Chegar nela libera o próximo mapa.</li><li>Onda 20: o Capitão em fúria. Vencer dá uma caixa grátis.</li></ul></div>
+    <div class="card"><h3>Ondas altas (15 a 20)</h3><ul><li>Metralhadora ou fuzil com perk de recarga rápida.</li><li>Colete sempre cheio e uma seringa guardada.</li><li>Use o Adiantar só quando estiver com tudo pronto.</li></ul></div>
+    <div class="card"><h3>Jogo mais leve no celular</h3><ul><li>Ajustes › Qualidade: deixe em Automática ou Baixa se travar.</li><li>Ajustes › Tamanho da interface: Pequeno libera mais tela.</li><li>Instale como app: abre em tela cheia e carrega na hora.</li></ul></div>
+    <div class="card"><h3>Progresso</h3><ul><li>Chefes podem soltar chip de tecnologia: ele compra habilidades.</li><li>Missões da semana dão XP do passe, moedas e Z-Coin.</li><li>Fique de olho nos eventos de XP em dobro.</li></ul></div>
   </div>
 </div></section>
 
@@ -207,7 +270,7 @@ footer a{color:var(--mute)}
   ];
   // notas de versão (sem nada interno do jogo)
   var NOTES = [
-    ["28.6", "Pronto pra instalar", ["Instale o jogo como app: no Android, Chrome › Instalar app; no iOS, Safari › Compartilhar › Adicionar à Tela de Início", "Depois da primeira vez o jogo abre na hora, até sem internet", "Tela de carregamento com barra", "Dicas na primeira partida", "Zumbis do andar de cima descem pela escada", "Eventos de XP em dobro no passe"]],
+    ["28.6", "Pronto pra instalar", ["Botijão, capacetes e bobes dos zumbis agora presos no corpo, sem flutuar", "Capacete do zumbi some quando quebra", "Instale o jogo como app: no Android, Chrome › Instalar app; no iOS, Safari › Compartilhar › Adicionar à Tela de Início", "Depois da primeira vez o jogo abre na hora, até sem internet", "Tela de carregamento com barra", "Dicas na primeira partida", "Zumbis do andar de cima descem pela escada", "Eventos de XP em dobro no passe"]],
     ["28.5", "Baú, roupas novas e pódio", ["Baú animado nas caixas: luz branca no comum, roxa no raro e dourada no lendário", "120 roupas novas nas caixas: 40 comuns, 40 raras e 40 lendárias", "Temporada 1: 5 lendárias e 2 raras no passe, e 5 lendárias e 2 raras na loja Z-Coin", "Ranking com pódio, foto da conta e rolagem lateral entre as quebradas", "Botão de feedback na tela inicial", "Boné e chapéu deixam o cabelo curto por baixo, sem vazar; boné dos zumbis acompanha a cabeça", "Zumbi descendo a escada não fica mais cortado pela sombra"]],
     ["28.4", "Interface no celular", ["Tela inicial cabe no celular deitado", "Textos dos menus maiores", "Ajustes › Tamanho da interface: pequeno, médio ou grande"]],
     ["28.3", "Chip, Z-Coin e passe", ["Chip de tecnologia: chefes têm 50% de chance de soltar; compra habilidades", "Z-Coin e loja de roupas raras e lendárias", "Passe da Temporada 1 com 40 níveis e trilha premium", "5 missões por semana", "Caixa grátis ao completar um mapa, com as chances na tela"]],
